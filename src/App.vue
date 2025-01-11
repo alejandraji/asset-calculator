@@ -7,6 +7,3 @@ import Calculator from './components/Calculator.vue';
   <Calculator />
 </template>
 
-<style scoped>
-
-</style>
