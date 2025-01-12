@@ -8,10 +8,15 @@
             {{currency.cc}}
           </option>
         </select>
-        <div>Selected: {{ selectedCurrency }}</div>
       </div>
       <label for="assets">Investable assets</label>
-      <input type="text" v-model="assets" id="assets" name="assets" placeholder="$0">
+      <input 
+        type="text" 
+        v-model="assets" 
+        id="assets" 
+        name="assets" 
+        :placeholder="`${selectedSymbol} 0`"
+      >
     </div>
     <button class="btn">
       Calculate
@@ -28,17 +33,20 @@
 <script setup>
   import { conversionToCrypto } from './../utils.js';
   import currencies from './../currencies.json';
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
 
   const selectedCurrency = ref('USD');
+  const selectedSymbol = computed(() => {
+    const currency = currencies.find(currency => currency.cc === selectedCurrency.value);
+    return currency ? currency.symbol : '';
+  })
   const assets = ref(null)
   const btc = ref(null)
   const eth = ref(null)
-  console.log(currencies)
+  console.log(currencies.cc)
 
   const submitHandler = async () => {
-    const conversion = await conversionToCrypto(assets.value);
-    console.log(conversion);
+    const conversion = await conversionToCrypto(assets.value, selectedCurrency.value);
     btc.value = conversion.BTC;
     eth.value = conversion.ETH;
   }
