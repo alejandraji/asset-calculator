@@ -1,7 +1,7 @@
 <template>
   <form class="" @submit.prevent="submitHandler">
     <div class="user-input">
-      <div>
+      <div class="select">
         <label for="currency">Choose currency:</label>
         <select v-model="selectedCurrency" name="currency" id="currency">
           <option v-for="currency in currencies" :value="currency.cc">
@@ -16,13 +16,14 @@
         id="assets" 
         name="assets" 
         :placeholder="`${selectedSymbol} 0`"
+        required
       >
     </div>
     <button class="btn">
       Calculate
     </button>
     <div class="calc-container">
-      <div>
+      <div class="">
         <label for="firstCryptoSelected">Choose CryptoCoin:</label>
         <select v-model="firstCryptoSelected" name="firstCryptoSelected" id="firstCryptoSelected">
           <option v-for="cryptocoin in cryptocoins" :value="cryptocoin.coin">
@@ -31,9 +32,9 @@
         </select> 
       </div>
       <label class="firstCrypto" for="firstCrypto">70% {{firstCryptoSelected}} allocation</label>
-      <input  type="text" v-model="firstCrypto" name="firstCrypto" placeholder="0.0">
+      <input  readonly type="text" v-model="firstCrypto" name="firstCrypto" placeholder="0.0">
       <label  for="eth">30% ETH allocation</label>
-      <input  type="text" v-model="eth" id="eth" name="eth" placeholder="0.0">
+      <input  readonly type="text" v-model="eth" id="eth" name="eth" placeholder="0.0">
     </div>
   </form>
 </template>
