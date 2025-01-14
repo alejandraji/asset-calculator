@@ -16,7 +16,7 @@ export const getCryptoExchangeRates = async (currencyCode) => {
 export const conversionToCrypto = async (dollarAmount,currencyCode, firstCrypto) =>{
   const seventySplit = dollarAmount * 0.7;
   const thirtySplit = dollarAmount * 0.3;
-  console.log( firstCrypto);
+  
   const rates = await getCryptoExchangeRates(currencyCode);
 
   return {

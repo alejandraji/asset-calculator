@@ -51,14 +51,12 @@
     return currency?.symbol;
   })
   const assets = ref(null);
-  const firstCrypto = ref(null);
+  const firstCrypto = ref('BTC');
   const firstCryptoSelected = ref(null);
-  // const btc = ref(null)
   const eth = ref(null)
 
   const submitHandler = async () => {
     const conversion = await conversionToCrypto(assets.value, selectedCurrency.value, firstCryptoSelected.value);
-    console.log(conversion, firstCryptoSelected);
     firstCrypto.value = conversion[firstCryptoSelected.value];
     eth.value = conversion.ETH;
   }
