@@ -23,7 +23,7 @@
       Calculate
     </button>
     <div class="calc-container">
-      <div class="">
+      <div>
         <label for="firstCryptoSelected">Choose CryptoCoin:</label>
         <select v-model="firstCryptoSelected" name="firstCryptoSelected" id="firstCryptoSelected">
           <option v-for="cryptocoin in cryptocoins" :value="cryptocoin.coin">

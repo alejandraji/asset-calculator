@@ -80,7 +80,14 @@ input {
   padding: 10px;
   border-radius: 5px;
   font-size: 20px;
+}
 
+.calc-container input {
+  border: none;
+  border-bottom: 2px solid #000;
+  outline: none;
+  padding: 8px;
+  width: 100%;
 }
 
 .calc-container, .user-input{
